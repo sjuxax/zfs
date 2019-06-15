@@ -27,6 +27,7 @@
 
 #include <linux/module.h>
 #include <linux/sched.h>
+#include <linux/sched/isolation.h>
 #include <linux/cpumask.h>
 #include <sys/debug.h>
 #include <sys/zone.h>
@@ -78,6 +79,7 @@
 #define	curproc				current
 #define	max_ncpus			num_possible_cpus()
 #define	boot_ncpus			num_online_cpus()
+#define	avail_cpus			housekeeping_cpumask(HK_FLAG_DOMAIN)
 #define	CPU_SEQID			smp_processor_id()
 #define	is_system_labeled()		0
 

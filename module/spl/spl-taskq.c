@@ -1010,7 +1010,7 @@ taskq_thread_create(taskq_t *tq)
 	}
 
 	if (spl_taskq_thread_bind) {
-		last_used_cpu = (last_used_cpu + 1) % num_online_cpus();
+		last_used_cpu = cpumask_next_wrap(last_used_cpu, avail_cpus, last_used_cpu, true);
 		kthread_bind(tqt->tqt_thread, last_used_cpu);
 	}
 
